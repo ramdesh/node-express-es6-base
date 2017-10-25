@@ -1,0 +1,97 @@
+{
+  "name": "node-express-es6-base",
+  "version": "0.0.1",
+  "private": true,
+  "description": "node.js express.js ES6-compliant base package",
+  "keywords": [
+    "node",
+    "express",
+    "es6"
+  ],
+  "author": "Ragavan Thiru, Ramindu Deshapriya",
+  "license": "MIT License v2.0",
+  "main": "app.js",
+  "engines": {
+    "npm": ">=3.10.10 <4",
+    "node": ">=6.9.2 <7"
+  },
+  "dependencies": {
+    "async": "^1.5.0",
+    "async-q": "^0.2.2",
+    "awilix": "^2.7.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-node6": "^11.0.0",
+    "babel-register": "^6.26.0",
+    "base-64": "^0.1.0",
+    "bcryptjs": "^2.3.0",
+    "body-parser": "~1.14.1",
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "chai-things": "^0.2.0",
+    "clearbit": "^1.2.3",
+    "compression": "~1.6.0",
+    "crypto": "0.0.3",
+    "express": "^4.12.3",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.0",
+    "gulp-concat": "^2.6.1",
+    "hashmap": "~2.0.4",
+    "jsonwebtoken": "^5.4.1",
+    "lazy.js": "^0.4.3",
+    "merge": "^1.2.0",
+    "mocha": "^3.2.0",
+    "mochawesome": "^2.0.4",
+    "multer": "^1.2.1",
+    "node-rest-client": "~1.5.1",
+    "node-uuid": "^1.4.3",
+    "oauth2orize": "^1.4.0",
+    "passport": "~0.3.0",
+    "passport-http": "~0.3.0",
+    "passport-http-bearer": "1.x.x",
+    "passport-jwt": "^3.0.0",
+    "passport-oauth2-client-password": "0.1.x",
+    "path": "^0.12.7",
+    "pdfkit": "^0.8.0",
+    "q": "^1.4.1",
+    "restling": "^0.9.1",
+    "swagger-jsdoc": "1.9.7",
+    "underscore": "^1.8.3",
+    "utf8": "^2.1.1",
+    "winston": "~1.0.1",
+    "yamljs": "~0.2.4"
+  },
+  "scripts": {
+    "start": "gulp && npm run quick-start",
+    "quick-start": "node dist/server.js --ulimit -n 999999 --max-old-space-size=1024",
+    "test": "mocha --harmony test/test-suite.js --timeout 200000000"
+  },
+  "eslintConfig": {
+    "env": {
+      "node": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
+    "rules": {
+      "semi": "error",
+      "eqeqeq": "error",
+      "curly": "error",
+      "no-irregular-whitespace": "error",
+      "no-var": "error"
+    }
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-node6": "^11.0.0",
+    "babel-register": "^6.26.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.0",
+    "gulp-concat": "^2.6.1"
+  }
+}
