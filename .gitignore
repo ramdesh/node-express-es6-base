@@ -2,12 +2,4 @@
 dist
 npm-debug.log
 
-
-!/node_modules/swagger-jsdoc/lib/index.js
-
 node_modules/*
-!node_modules/swagger-jsdoc
-node_modules/swagger-jsdoc/*
-!node_modules/swagger-jsdoc/lib
-node_modules/swagger-jsdoc/lib/*
-!node_modules/swagger-jsdoc/lib/index.js
