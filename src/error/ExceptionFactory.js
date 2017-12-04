@@ -6,10 +6,10 @@ let self;
  * @constructor
  */
 class ExceptionFactory {
-    constructor(config, helpersUtil) {
+    constructor(config) {
         self = this;
         self.config = config;
-        self.helpersUtil = helpersUtil;
+        // self.helpersUtil = helpersUtil;
     }
 
     createInstance(errorCode, httpStatusCode, formatValuesArray){
@@ -18,7 +18,7 @@ class ExceptionFactory {
             statusCode = 500;
         }
 
-        return new Exception(errorCode, statusCode, formatValuesArray, self.config, self.helpersUtil);
+        // return new Exception(errorCode, statusCode, formatValuesArray, self.config, self.helpersUtil);
     };
 
 

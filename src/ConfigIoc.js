@@ -18,7 +18,11 @@ import HelloController from './api/hello/HelloController';
 // Import Factories
 import ExceptionFactory from './error/ExceptionFactory';
 
+// Import Services
+import HelloService from './services/HelloService'
 
+// Import Repositories
+import HelloRepository from './repository/HelloRepository'
 
 let container = awilix.createContainer({
     resolutionMode: awilix.ResolutionMode.CLASSIC
@@ -58,8 +62,13 @@ container.register({
     crossOriginMW: awilix.asClass(CrossOriginMW).singleton(),
 
     // Register controllers
-    helloController: awilix.asClass(HelloController).singleton()
+    helloController: awilix.asClass(HelloController).singleton(),
 
+    // Register services
+    helloService: awilix.asClass(HelloService).singleton(),
+
+    // Register repository
+    helloRepository: awilix.asClass(HelloRepository).singleton()
 });
 
 export default container;
