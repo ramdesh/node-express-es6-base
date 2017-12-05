@@ -68,6 +68,7 @@ container.register({
     exceptionFactory: awilix.asClass(ExceptionFactory).singleton(),
     constants: awilix.asValue(constants),
     apiDb: awilix.asValue(apiDb),
+    swaggerSpec:awilix.asValue(swaggerSpec),
 
     // Register middleware
     crossOriginMW: awilix.asClass(CrossOriginMW).singleton(),
