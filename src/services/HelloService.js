@@ -8,25 +8,42 @@ let self;
 export default class HelloService {
     constructor(config, 
                 constants, 
-                exceptionFactory, q) {
+                exceptionFactory,
+                q,
+                helloRepository) {
 
         self = this;
         self.q = q;
         self.config = config;
         self.constants = constants;
         self.exceptionFactory = exceptionFactory;
+        self.helloRepository = helloRepository;
     }
 
-    printHello(name) {
-        // return self.authRepository.printHello()
-        //     .then((token) => {
-        //         return self.q.when(token);
-        //     })
-        //     .catch((err) => {
-        //         console.log(err);
-        //         return self.q.when(null);
-        //     });
-        console.log("Hello, " + name); 
+    insertUser(name) {
+        let user = {
+            "name": name
+        }
+
+        return self.helloRepository.insertUser(user)
+            .then((result) => {
+                return self.q.when(result);
+            })
+            .catch((err) => {
+                console.log(err);
+                return self.q.when(null);
+            });
+    }
+
+    findUser(name) {
+        return self.helloRepository.findUser(name)
+            .then((result) => {
+                return self.q.when(result);
+            })
+            .catch((err) => {
+                console.log(err);
+                return self.q.when(null);
+            });
     }
 
 }

@@ -1,24 +1,40 @@
-'use strict';
+'use strict'
+import BaseRepository from './BaseRepository'
 
 let self;
 
-export default class HelloRepository {
-    constructor(apiDb,q, config, constants, lazyjs) {
+export default class HelloRepository extends BaseRepository {
+    constructor(apiDb, q, config, constants) {
+        super(apiDb, q, config, constants, config.dataModel.collection.hello)
         self = this;
+        self.apiDb = apiDb;
         self.q = q;
         self.config = config;
         self.constants = constants;;
     }
 
-    findAll(orgId, userId) {
-        return this._fetch(this.config.dataModel.designs.getAll,
-            this.config.dataModel.views.getAll,selector)
-            .then((resultSet) => {
-                // return this.helpersUtil.extractViewDocResultSet(resultSet, this.idProp);
+    insertUser(user) {
+        return self._insert(user)
+            .then((result) => {
+                return result;
             })
             .catch((err) => {
                 console.log(err);
-                return self.q.when([]);
+                return self.q.when({});
+            });
+    }
+
+    findUser(name) {
+        let query = {
+            "name": name
+        }
+        return self._find(query)
+            .then((result) => {
+                return result;
+            })
+            .catch((err) => {
+                console.log(err);
+                return self.q.when({});
             });
     }
 }

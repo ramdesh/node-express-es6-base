@@ -2,10 +2,37 @@
 /**
  * Base class for repository pattern
  */
-export default class BaseRepository {
-    constructor(db, q, config, constants, lazyjs, idProp = null, collection = null) {
+let self;
 
+export default class BaseRepository {
+    constructor(db, q, config, constants, collection) {
+        self = this
+        self.db = db;
+        self.q = q;
+        self.config = config;
+        self.constants = constants;
+        self.collection = collection;
     }
 
+    _insert(object) {
+        return this.db.collection(self.collection).insert(object)
+            .then(obj => {
+                return this.q.when(obj);
+            })
+            .catch(err => {
+                console.error(err);
+                return this.q.when(null);
+            });
+    }
 
+    _find(query) {
+        return this.db.collection(self.collection).findOne(query)
+            .then(obj => {
+                return this.q.when(obj);
+            })
+            .catch(err => {
+                console.error(err);
+                return this.q.when(null);
+            });
+    }
 }
