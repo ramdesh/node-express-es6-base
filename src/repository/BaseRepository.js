@@ -15,7 +15,7 @@ export default class BaseRepository {
     }
 
     _insert(object) {
-        return this.db.collection(self.collection).insert(object)
+        return self.db.collection(self.collection).insert(object)
             .then(obj => {
                 return this.q.when(obj);
             })
@@ -26,7 +26,7 @@ export default class BaseRepository {
     }
 
     _find(query) {
-        return this.db.collection(self.collection).findOne(query)
+        return self.db.collection(self.collection).findOne(query)
             .then(obj => {
                 return this.q.when(obj);
             })

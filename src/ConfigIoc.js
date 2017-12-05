@@ -31,12 +31,8 @@ let container = awilix.createContainer({
 });
 
 let MongoClient = MongoDB.MongoClient;
-let apiDb;
 
-MongoClient.connect(config.DB.mongodb.nodebaseapp.connection)
-    .then((db) => {
-        apiDb = db;
-    })
+let apiDb = MongoClient.connect(config.DB.mongodb.nodebaseapp.connection)
 
 console.log("Initializing Swagger API documentation...");
 let swaggerDefinition = {

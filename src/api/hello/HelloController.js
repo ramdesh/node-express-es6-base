@@ -1,12 +1,13 @@
 let self;
 
 export default class HelloController {
-    constructor(express, helloService) {
+    constructor(express, helloService, constants) {
         self = this;
         self.expressRouter = new express.Router();
         self.helloService = helloService;
+        self.constants = constants;
         
-        self.expressRouter.post('/input/', self.insertUser);
+        self.expressRouter.post('/input', self.insertUser);
         self.expressRouter.get('/fetch/:name', self.findUser);
 
         return self.expressRouter;
