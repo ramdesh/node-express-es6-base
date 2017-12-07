@@ -21,11 +21,7 @@ export default class HelloService {
     }
 
     insertUser(name) {
-        let user = {
-            "name": name
-        }
-
-        return self.helloRepository.insertUser(user)
+        return self.helloRepository.insertUser(name)
             .then((result) => {
                 return self.q.when(result);
             })

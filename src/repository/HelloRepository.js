@@ -1,41 +1,44 @@
 'use strict'
 import BaseRepository from './BaseRepository'
 
-let self;
+let self, User;
 
-export default class HelloRepository extends BaseRepository {
-    constructor(apiDb, q, config, constants) {
-        super(apiDb, q, config, constants, config.dataModel.collection.hello)
+export default class HelloRepository {
+    constructor(q, config, constants, mongoose) {
+        // super(apiDb, q, config, constants, config.dataModel.collection.hello)
         self = this;
-        self.apiDb = apiDb;
+        // self.apiDb = apiDb;
         self.q = q;
         self.config = config;
-        self.constants = constants;;
+        self.constants = constants;
+        self.mongoose = mongoose;
+
+        let Schema = self.mongoose.Schema;
+        let helloUserSchema = self.mongoose.Schema({
+            name: String
+        });
+
+        User = self.mongoose.model('User', helloUserSchema);
     }
 
-    insertUser(user) {
-        return self._insert(user)
+    insertUser(name) {
+        let tempUser = new User({
+            name: name
+        });
+        // let insertUser = self.q.nbind(User.save, User);
+
+        return tempUser.save()
             .then((result) => {
                 return result;
             })
-            .catch((err) => {
-                console.log(err);
-                return self.q.when({});
-            });
     }
 
     findUser(name) {
-        let query = {
-            "name": name
-        }
-        return self._find(query)
+        let findUser = self.q.nbind(User.findOne, User);
+        return findUser({name: name})
             .then((result) => {
-                return result;
+                return self.q.when(result);
             })
-            .catch((err) => {
-                console.log(err);
-                return self.q.when({});
-            });
     }
 }
 
