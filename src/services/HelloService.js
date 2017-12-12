@@ -20,7 +20,7 @@ export default class HelloService {
         self.helloRepository = helloRepository;
     }
 
-    insertUser(name) {
+    insertHelloUser(name) {
         return self.helloRepository.insertHelloUser(name)
             .then((result) => {
                 return self.q.when(result);
@@ -31,7 +31,7 @@ export default class HelloService {
             });
     }
 
-    findUser(name) {
+    findHelloUser(name) {
         return self.helloRepository.findHelloUser(name)
             .then((result) => {
                 return self.q.when(result);

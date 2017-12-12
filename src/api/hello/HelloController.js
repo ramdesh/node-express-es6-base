@@ -7,14 +7,14 @@ export default class HelloController {
         self.helloService = helloService;
         self.constants = constants;
         
-        self.expressRouter.post('/input', self.insertUser);
-        self.expressRouter.get('/fetch/:name', self.findUser);
+        self.expressRouter.post('/input', self.insertHelloUser);
+        self.expressRouter.get('/fetch/:name', self.findHelloUser);
 
         return self.expressRouter;
     }
 
-    insertUser(req, res, next) {
-        self.helloService.insertUser(req.body.name)
+    insertHelloUser(req, res, next) {
+        self.helloService.insertHelloUser(req.body.name)
             .then((result) => {
                 res.status(self.constants.SUCCESS).json(result);
             })
@@ -23,8 +23,8 @@ export default class HelloController {
             });
     }
 
-    findUser(req, res, next) {
-        self.helloService.findUser(req.params.name)
+    findHelloUser(req, res, next) {
+        self.helloService.findHelloUser(req.params.name)
             .then((result) => {
                 res.status(self.constants.SUCCESS).json(result);
             })

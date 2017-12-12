@@ -21,9 +21,9 @@ export default class HelloRepository extends BaseRepository{
     }
 
     insertHelloUser(name) {
-        let tempUser = new self.model({
+        let tempUser = {
             name: name
-        });
+        };
 
         return self._insert(tempUser)
             .then((result) => {

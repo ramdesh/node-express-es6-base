@@ -13,7 +13,8 @@ export default class BaseRepository {
     }
 
     _insert(object) {
-        let insert = self.q.nbind(object.save, object);
+        let model = new self.model(object);
+        let insert = self.q.nbind(model.save, model);
 
         return insert()
             .then((result) => {

@@ -9,16 +9,16 @@ class ExceptionFactory {
     constructor(config) {
         self = this;
         self.config = config;
-        // self.helpersUtil = helpersUtil;
+        self.helpersUtil = helpersUtil;
     }
 
-    createInstance(errorCode, httpStatusCode, formatValuesArray){
+    createInstance(errorCode, httpStatusCode, formatValuesArray) {
         let statusCode = httpStatusCode;
-        if(typeof(httpStatusCode) === 'undefined' || httpStatusCode == null){
+        if (typeof (httpStatusCode) === 'undefined' || httpStatusCode == null) {
             statusCode = 500;
         }
 
-        // return new Exception(errorCode, statusCode, formatValuesArray, self.config, self.helpersUtil);
+        return new Exception(errorCode, statusCode, formatValuesArray, self.config, self.helpersUtil);
     };
 
 

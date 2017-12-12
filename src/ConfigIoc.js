@@ -10,6 +10,9 @@ import q from 'q';
 import swaggerJSDoc from 'swagger-jsdoc';
 import mongoose from 'mongoose';
 
+// Import Utils
+import HelpersUtil from './utils/helpersUtil';
+
 // Import Middleware
 import CrossOriginMW from './middleware/CrossOriginMW';
 
@@ -63,6 +66,7 @@ container.register({
     constants: awilix.asValue(constants),
     swaggerSpec: awilix.asValue(swaggerSpec),
     mongoose: awilix.asValue(mongoose),
+    helpersUtil: awilix.asValue(HelpersUtil),
 
     // Register middleware
     crossOriginMW: awilix.asClass(CrossOriginMW).singleton(),
