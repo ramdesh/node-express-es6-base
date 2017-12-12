@@ -3,13 +3,11 @@ import bodyParser from 'body-parser';
 import * as constants from './utils/constants';
 import container from './ConfigIoc';
 
-
 let app = express();
 
-
 // Use middleware as required
-app.use(bodyParser.json({limit:constants.REQUEST_LIMIT_KB+"kb"}));
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json({ limit: constants.REQUEST_LIMIT_KB + "kb" }));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 let crossOriginMW = container.resolve('crossOriginMW');
 app.use(crossOriginMW.middleware);

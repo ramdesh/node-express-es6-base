@@ -6,15 +6,15 @@ let self;
  * @constructor
  */
 class ExceptionFactory {
-    constructor(config, helpersUtil) {
+    constructor(config) {
         self = this;
         self.config = config;
         self.helpersUtil = helpersUtil;
     }
 
-    createInstance(errorCode, httpStatusCode, formatValuesArray){
+    createInstance(errorCode, httpStatusCode, formatValuesArray) {
         let statusCode = httpStatusCode;
-        if(typeof(httpStatusCode) === 'undefined' || httpStatusCode == null){
+        if (typeof (httpStatusCode) === 'undefined' || httpStatusCode == null) {
             statusCode = 500;
         }
 

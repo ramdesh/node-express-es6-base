@@ -8,6 +8,10 @@ import express from 'express';
 import underscore from 'underscore';
 import q from 'q';
 import swaggerJSDoc from 'swagger-jsdoc';
+import mongoose from 'mongoose';
+
+// Import Utils
+import HelpersUtil from './utils/helpersUtil';
 
 // Import Middleware
 import CrossOriginMW from './middleware/CrossOriginMW';
@@ -18,11 +22,18 @@ import HelloController from './api/hello/HelloController';
 // Import Factories
 import ExceptionFactory from './error/ExceptionFactory';
 
+// Import Services
+import HelloService from './services/HelloService'
 
+// Import Repositories
+import HelloRepository from './repository/HelloRepository'
+import BaseRepository from './repository/BaseRepository'
 
 let container = awilix.createContainer({
     resolutionMode: awilix.ResolutionMode.CLASSIC
 });
+
+mongoose.connect(config.DB.mongodb.nodebaseapp.connection, { useMongoClient: true });
 
 console.log("Initializing Swagger API documentation...");
 let swaggerDefinition = {
@@ -53,13 +64,22 @@ container.register({
     config: awilix.asValue(config),
     exceptionFactory: awilix.asClass(ExceptionFactory).singleton(),
     constants: awilix.asValue(constants),
+    swaggerSpec: awilix.asValue(swaggerSpec),
+    mongoose: awilix.asValue(mongoose),
+    helpersUtil: awilix.asValue(HelpersUtil),
 
     // Register middleware
     crossOriginMW: awilix.asClass(CrossOriginMW).singleton(),
 
     // Register controllers
-    helloController: awilix.asClass(HelloController).singleton()
+    helloController: awilix.asClass(HelloController).singleton(),
 
+    // Register services
+    helloService: awilix.asClass(HelloService).singleton(),
+
+    // Register repository
+    helloRepository: awilix.asClass(HelloRepository).singleton(),
+    baseRepository: awilix.asClass(BaseRepository).singleton()
 });
 
 export default container;
