@@ -6,7 +6,7 @@ let self;
  * @constructor
  */
 class ExceptionFactory {
-    constructor(config) {
+    constructor(config, helpersUtil) {
         self = this;
         self.config = config;
         self.helpersUtil = helpersUtil;
