@@ -23,11 +23,11 @@ import HelloController from './api/hello/HelloController';
 import ExceptionFactory from './error/ExceptionFactory';
 
 // Import Services
-import HelloService from './services/HelloService'
+import HelloService from './services/HelloService';
 
 // Import Repositories
-import HelloRepository from './repository/HelloRepository'
-import BaseRepository from './repository/BaseRepository'
+import HelloRepository from './repository/HelloRepository';
+import BaseRepository from './repository/BaseRepository';
 
 let container = awilix.createContainer({
     resolutionMode: awilix.ResolutionMode.CLASSIC
