@@ -1,14 +1,10 @@
 let self;
 
 export default class HelpersUtil {
-    constructor(constants, q, moment, momenttz, tzlookup, lazyjs) {
+    constructor(constants, q) {
         self = this;
         self.constants = constants;
         self.q = q;
-        self.moment = moment;
-        self.momenttz = momenttz;
-        self.tzlookup = tzlookup;
-        self.lazyjs = lazyjs;
     }
     
     stringFormat(format, args) {
@@ -43,12 +39,6 @@ export default class HelpersUtil {
             }
             else if(type === 'bool'){
                 return ((val) ? 1 : 0);
-            }
-            else if(format === 'date'){
-                return self.fromIso8601Date(val);
-            }
-            else if(format === 'utc'){
-                return self.fromIso8601DateToUTC(val);
             }
             else if(format === 'num'){
                 if(isNaN(val)){
