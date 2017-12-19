@@ -33,6 +33,7 @@ let container = awilix.createContainer({
     resolutionMode: awilix.ResolutionMode.CLASSIC
 });
 
+mongoose.Promise = global.Promise;
 mongoose.connect(config.DB.mongodb.nodebaseapp.connection, { useMongoClient: true });
 
 console.log("Initializing Swagger API documentation...");

@@ -1,11 +1,11 @@
 'use strict'
 import BaseRepository from './BaseRepository'
 
-let self;
+let self, schema;
 
-export default class HelloRepository extends BaseRepository{
+export default class HelloRepository extends BaseRepository {
     constructor(q, config, constants, mongoose) {
-        super(q, config, constants)
+        super(q, config, constants, config.dataModel.collection.hello);
         self = this;
         self.q = q;
         self.config = config;
@@ -13,11 +13,10 @@ export default class HelloRepository extends BaseRepository{
         self.mongoose = mongoose;
 
         let Schema = self.mongoose.Schema;
-        let helloUserSchema = self.mongoose.Schema({
+        let schemaStructure = {
             name: String
-        }, { collection: config.dataModel.collection.hello});
-
-        self.model = self.mongoose.model(config.dataModel.collection.hello, helloUserSchema);
+        }
+        schema = self.mongoose.Schema(schemaStructure, { collection: self.config.dataModel.collection.hello });
     }
 
     insertHelloUser(name) {
@@ -25,7 +24,7 @@ export default class HelloRepository extends BaseRepository{
             name: name
         };
 
-        return self._insert(tempUser)
+        return self._insert(tempUser, schema)
             .then((result) => {
                 return result;
             })
@@ -40,7 +39,49 @@ export default class HelloRepository extends BaseRepository{
             name: name
         }
 
-        return self._find(query)
+        return self._find(query, schema)
+            .then((result) => {
+                return result;
+            })
+            .catch((err) => {
+                console.log(err);
+                return self.q.when({});
+            });
+    }
+
+    updateHelloUser(name, updateUser) {
+        let query = {
+            name: name
+        }
+
+        return self._update(query, updateUser, schema)
+            .then((result) => {
+                return result;
+            })
+            .catch((err) => {
+                console.log(err);
+                return self.q.when({});
+            });
+    }
+
+    removeHelloUser(name) {
+        let deleteUser = {
+            name: name
+        };
+
+        return self._remove(deleteUser, schema)
+            .then((result) => {
+                return result;
+            })
+            .catch((err) => {
+                console.log(err);
+                return self.q.when({});
+            });
+    }
+
+    insertBulkHelloUsers(users) {
+
+        return self._bulkInsert(users, schema)
             .then((result) => {
                 return result;
             })

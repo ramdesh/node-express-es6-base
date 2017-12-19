@@ -2,7 +2,7 @@
 let self;
 
 /**
- * Auth Service
+ * Hello Service
  * @constructor
  */
 export default class HelloService {
@@ -42,4 +42,36 @@ export default class HelloService {
             });
     }
 
+    updateHelloUser(name, user) {
+        return self.helloRepository.updateHelloUser(name, user)
+            .then((result) => {
+                return self.q.when(result);
+            })
+            .catch((err) => {
+                console.log(err);
+                return self.q.when(null);
+            });
+    }
+
+    removeHelloUser(name) {
+        return self.helloRepository.removeHelloUser(name)
+            .then((result) => {
+                return self.q.when(result);
+            })
+            .catch((err) => {
+                console.log(err);
+                return self.q.when(null);
+            });
+    }
+
+    insertBulkHelloUsers(usersArray) {
+        return self.helloRepository.insertBulkHelloUsers(usersArray)
+            .then((result) => {
+                return self.q.when(result);
+            })
+            .catch((err) => {
+                console.log(err);
+                return self.q.when(null);
+            });
+    }
 }
