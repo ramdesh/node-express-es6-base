@@ -17,17 +17,17 @@ import HelpersUtil from './utils/helpersUtil';
 import CrossOriginMW from './middleware/CrossOriginMW';
 
 // Import controllers
-import HelloController from './api/hello/HelloController';
+import UserController from './api/user/UserController';
 
 // Import Factories
 import ExceptionFactory from './error/ExceptionFactory';
 
 // Import Services
-import HelloService from './services/HelloService';
+import UserService from './services/UserService'
 
 // Import Repositories
-import HelloRepository from './repository/HelloRepository';
-import BaseRepository from './repository/BaseRepository';
+import UserRepository from './repository/UserRepository'
+import BaseRepository from './repository/BaseRepository'
 
 let container = awilix.createContainer({
     resolutionMode: awilix.ResolutionMode.CLASSIC
@@ -73,13 +73,13 @@ container.register({
     crossOriginMW: awilix.asClass(CrossOriginMW).singleton(),
 
     // Register controllers
-    helloController: awilix.asClass(HelloController).singleton(),
+    userController: awilix.asClass(UserController).singleton(),
 
     // Register services
-    helloService: awilix.asClass(HelloService).singleton(),
+    userService: awilix.asClass(UserService).singleton(),
 
     // Register repository
-    helloRepository: awilix.asClass(HelloRepository).singleton(),
+    userRepository: awilix.asClass(UserRepository).singleton(),
     baseRepository: awilix.asClass(BaseRepository).singleton()
 });
 

@@ -3,9 +3,9 @@ import BaseRepository from './BaseRepository'
 
 let self, schema;
 
-export default class HelloRepository extends BaseRepository {
+export default class UserRepository extends BaseRepository {
     constructor(q, config, constants, mongoose) {
-        super(q, config, constants, config.dataModel.collection.hello);
+        super(q, config, constants, config.dataModel.collection.user);
         self = this;
         self.q = q;
         self.config = config;
@@ -16,10 +16,10 @@ export default class HelloRepository extends BaseRepository {
         let schemaStructure = {
             name: String
         }
-        schema = self.mongoose.Schema(schemaStructure, { collection: self.config.dataModel.collection.hello });
+        schema = self.mongoose.Schema(schemaStructure, { collection: self.config.dataModel.collection.user });
     }
 
-    insertHelloUser(name) {
+    insertUser(name) {
         let tempUser = {
             name: name
         };
@@ -34,7 +34,7 @@ export default class HelloRepository extends BaseRepository {
             });
     }
 
-    findHelloUser(name) {
+    findUser(name) {
         let query = {
             name: name
         }
@@ -49,7 +49,7 @@ export default class HelloRepository extends BaseRepository {
             });
     }
 
-    updateHelloUser(name, updateUser) {
+    updateUser(name, updateUser) {
         let query = {
             name: name
         }
@@ -64,7 +64,7 @@ export default class HelloRepository extends BaseRepository {
             });
     }
 
-    removeHelloUser(name) {
+    removeUser(name) {
         let deleteUser = {
             name: name
         };
@@ -79,7 +79,7 @@ export default class HelloRepository extends BaseRepository {
             });
     }
 
-    insertBulkHelloUsers(users) {
+    insertBulkUsers(users) {
 
         return self._bulkInsert(users, schema)
             .then((result) => {

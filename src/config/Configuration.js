@@ -14,7 +14,7 @@ module.exports = {
 
   dataModel: {
     collection: {
-      hello: "Hello"
+      user: "User"
     }
   }
 };

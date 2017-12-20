@@ -2,26 +2,26 @@
 let self;
 
 /**
- * Hello Service
+ * User Service
  * @constructor
  */
-export default class HelloService {
+export default class UserService {
     constructor(config, 
                 constants, 
                 exceptionFactory,
                 q,
-                helloRepository) {
+                userRepository) {
 
         self = this;
         self.q = q;
         self.config = config;
         self.constants = constants;
         self.exceptionFactory = exceptionFactory;
-        self.helloRepository = helloRepository;
+        self.userRepository = userRepository;
     }
 
-    insertHelloUser(name) {
-        return self.helloRepository.insertHelloUser(name)
+    insertUser(name) {
+        return self.userRepository.insertUser(name)
             .then((result) => {
                 return self.q.when(result);
             })
@@ -31,8 +31,8 @@ export default class HelloService {
             });
     }
 
-    findHelloUser(name) {
-        return self.helloRepository.findHelloUser(name)
+    findUser(name) {
+        return self.userRepository.findUser(name)
             .then((result) => {
                 return self.q.when(result);
             })
@@ -42,8 +42,8 @@ export default class HelloService {
             });
     }
 
-    updateHelloUser(name, user) {
-        return self.helloRepository.updateHelloUser(name, user)
+    updateUser(name, user) {
+        return self.userRepository.updateUser(name, user)
             .then((result) => {
                 return self.q.when(result);
             })
@@ -53,8 +53,8 @@ export default class HelloService {
             });
     }
 
-    removeHelloUser(name) {
-        return self.helloRepository.removeHelloUser(name)
+    removeUser(name) {
+        return self.userRepository.removeUser(name)
             .then((result) => {
                 return self.q.when(result);
             })
@@ -64,8 +64,8 @@ export default class HelloService {
             });
     }
 
-    insertBulkHelloUsers(usersArray) {
-        return self.helloRepository.insertBulkHelloUsers(usersArray)
+    insertBulkUsers(usersArray) {
+        return self.userRepository.insertBulkUsers(usersArray)
             .then((result) => {
                 return self.q.when(result);
             })
