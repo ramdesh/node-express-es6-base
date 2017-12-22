@@ -1,26 +1,26 @@
 let self;
 
-export default class HelloController {
-    constructor(express, helloService, constants) {
+export default class UserController {
+    constructor(express, userService, constants) {
         self = this;
         self.expressRouter = new express.Router();
-        self.helloService = helloService;
+        self.userService = userService;
         self.constants = constants;
         
-        self.expressRouter.post('/input', self.insertHelloUser);
-        self.expressRouter.post('/bulk', self.insertBulkHelloUsers);
+        self.expressRouter.post('/input', self.insertUser);
+        self.expressRouter.post('/bulk', self.insertBulkUsers);
 
-        self.expressRouter.put('/update/:name', self.updateHelloUser);
+        self.expressRouter.put('/update/:name', self.updateUser);
 
-        self.expressRouter.get('/fetch/:name', self.findHelloUser);
+        self.expressRouter.get('/fetch/:name', self.findUser);
 
-        self.expressRouter.delete('/remove/:name', self.removeHelloUser);
+        self.expressRouter.delete('/remove/:name', self.removeUser);
 
         return self.expressRouter;
     }
 
-    insertHelloUser(req, res, next) {
-        self.helloService.insertHelloUser(req.body.name)
+    insertUser(req, res, next) {
+        self.userService.insertUser(req.body.name)
             .then((result) => {
                 res.status(self.constants.SUCCESS).json(result);
             })
@@ -29,8 +29,8 @@ export default class HelloController {
             });
     }
 
-    findHelloUser(req, res, next) {
-        self.helloService.findHelloUser(req.params.name)
+    findUser(req, res, next) {
+        self.userService.findUser(req.params.name)
             .then((result) => {
                 res.status(self.constants.SUCCESS).json(result);
             })
@@ -39,9 +39,9 @@ export default class HelloController {
             });
     }
 
-    updateHelloUser(req, res, next) {
+    updateUser(req, res, next) {
 
-        self.helloService.updateHelloUser(req.params.name, req.body)
+        self.userService.updateUser(req.params.name, req.body)
             .then((result) => {
                 res.status(self.constants.SUCCESS).json(result);
             })
@@ -50,8 +50,8 @@ export default class HelloController {
             });
     }
 
-    removeHelloUser(req, res, next) {
-        self.helloService.removeHelloUser(req.params.name)
+    removeUser(req, res, next) {
+        self.userService.removeUser(req.params.name)
             .then((result) => {
                 res.status(self.constants.SUCCESS).json(result);
             })
@@ -60,8 +60,8 @@ export default class HelloController {
             });
     }
 
-    insertBulkHelloUsers(req, res, next) {
-        self.helloService.insertBulkHelloUsers(req.body)
+    insertBulkUsers(req, res, next) {
+        self.userService.insertBulkUsers(req.body)
             .then((result) => {
                 res.status(self.constants.SUCCESS).json(result);
             })
