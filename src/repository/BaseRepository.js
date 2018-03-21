@@ -22,7 +22,7 @@ export default class BaseRepository {
         return insert()
             .then((result) => {
                 return result;
-            })
+            });
     }
 
     _find(query, schema) {
@@ -33,7 +33,7 @@ export default class BaseRepository {
         return find(query)
             .then((result) => {
                 return self.q.when(result);
-            })
+            });
     }
 
     _remove(query, schema) {
@@ -44,7 +44,7 @@ export default class BaseRepository {
         return remove(query)
             .then((result) => {
                 return self.q.when(result);
-            })
+            });
     }
 
     _update(query, updateDoc, schema) {
@@ -55,7 +55,7 @@ export default class BaseRepository {
         return update(query, updateDoc)
             .then((result) => {
                 return self.q.when(result);
-            })
+            });
     }
 
     _bulkInsert(docs, schema) {
@@ -66,6 +66,6 @@ export default class BaseRepository {
         return insert(docs)
             .then((result) => {
                 return self.q.when(result);
-            })
+            });
     }
 }

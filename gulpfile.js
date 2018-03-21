@@ -1,7 +1,7 @@
-var gulp = require("gulp");
-var babel = require("gulp-babel");
-var concat = require("gulp-concat");
-var pump = require('pump');
+let gulp = require("gulp");
+let babel = require("gulp-babel");
+let concat = require("gulp-concat");
+let pump = require('pump');
 
 gulp.task("babel-prod", function () {
     return gulp.src(['src/**/*.js', '!src/scripts/*'])

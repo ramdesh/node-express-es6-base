@@ -1,5 +1,5 @@
-'use strict'
-import BaseRepository from './BaseRepository'
+'use strict';
+import BaseRepository from './BaseRepository';
 
 let self, schema;
 
@@ -15,7 +15,7 @@ export default class UserRepository extends BaseRepository {
         let Schema = self.mongoose.Schema;
         let schemaStructure = {
             name: String
-        }
+        };
         schema = self.mongoose.Schema(schemaStructure, { collection: self.config.dataModel.collection.user });
     }
 
@@ -37,7 +37,7 @@ export default class UserRepository extends BaseRepository {
     findUser(name) {
         let query = {
             name: name
-        }
+        };
 
         return self._find(query, schema)
             .then((result) => {
@@ -52,7 +52,7 @@ export default class UserRepository extends BaseRepository {
     updateUser(name, updateUser) {
         let query = {
             name: name
-        }
+        };
 
         return self._update(query, updateUser, schema)
             .then((result) => {

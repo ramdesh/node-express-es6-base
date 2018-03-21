@@ -8,7 +8,7 @@
     "express",
     "es6"
   ],
-  "author": "Ragavan Thiru, Ramindu Deshapriya",
+  "author": "Ragavan Thiru, Ramindu Deshapriya, Ashantha Lahiru Egodaarachchi",
   "license": "MIT License v2.0",
   "main": "app.js",
   "engines": {
