@@ -7,14 +7,14 @@ export default class UserController {
         self.userService = userService;
         self.constants = constants;
         
-        self.expressRouter.post('/input', self.insertUser);
+        self.expressRouter.post('', self.insertUser);
         self.expressRouter.post('/bulk', self.insertBulkUsers);
 
-        self.expressRouter.put('/update/:name', self.updateUser);
+        self.expressRouter.put('/:name', self.updateUser);
 
-        self.expressRouter.get('/fetch/:name', self.findUser);
+        self.expressRouter.get('/:name', self.findUser);
 
-        self.expressRouter.delete('/remove/:name', self.removeUser);
+        self.expressRouter.delete('/:name', self.removeUser);
 
         return self.expressRouter;
     }
