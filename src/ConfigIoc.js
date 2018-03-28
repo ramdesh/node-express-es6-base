@@ -23,11 +23,11 @@ import UserController from './api/user/UserController';
 import ExceptionFactory from './error/ExceptionFactory';
 
 // Import Services
-import UserService from './services/UserService'
+import UserService from './services/UserService';
 
 // Import Repositories
-import UserRepository from './repository/UserRepository'
-import BaseRepository from './repository/BaseRepository'
+import BaseRepository from './repository/BaseRepository';
+import UserRepository from './repository/UserRepository';
 
 let container = awilix.createContainer({
     resolutionMode: awilix.ResolutionMode.CLASSIC
@@ -79,8 +79,8 @@ container.register({
     userService: awilix.asClass(UserService).singleton(),
 
     // Register repository
-    userRepository: awilix.asClass(UserRepository).singleton(),
-    baseRepository: awilix.asClass(BaseRepository).singleton()
+    baseRepository: awilix.asClass(BaseRepository).singleton(),
+    userRepository: awilix.asClass(UserRepository).singleton()
 });
 
 export default container;

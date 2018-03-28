@@ -17,7 +17,7 @@ export default class Router {
         const path = `${self.constants.V1}`; 
         console.log('http://{hostname}' + path);
         router.use(`/swagger`, loadSwagger)
-        router.use(`${path}/user`, userController);
+        router.use(`${path}/users`, userController);
 
         return router;
     }
