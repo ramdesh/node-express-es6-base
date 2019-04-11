@@ -19,6 +19,24 @@ export default class UserController {
         return self.expressRouter;
     }
 
+    /**
+     * @swagger
+     *
+     * /users:
+     *   post:
+     *     description: Create a new user
+     *     produces:
+     *       - application/json
+     *     parameters:
+     *       - name: name
+     *         description: The user's name
+     *         in: body
+     *         required: true
+     *         type: string
+     *     responses:
+     *       200:
+     *         description: Success
+     */
     createUser(req, res, next) {
         self.userService.insertUser(req.body.name)
             .then((result) => {
